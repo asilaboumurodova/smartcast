@@ -12,4 +12,7 @@ export default defineConfig({
       { find: '@i', replacement: fileURLToPath(new URL('./src/assets/images', import.meta.url)) }
     ]
   },
+  server: {
+    port: 9000
+  }
 })

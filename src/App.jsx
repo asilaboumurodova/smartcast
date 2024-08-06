@@ -1,9 +1,12 @@
 import React from 'react'
+import ContextProvider from './context/Context'
 import Entry from './pages/Entry'
 
 function App() {
   return (
-    <Entry />
+    <ContextProvider>
+    <Entry/>
+    </ContextProvider>
   )
 }
 
