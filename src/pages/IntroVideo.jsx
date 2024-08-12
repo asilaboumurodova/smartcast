@@ -1,26 +1,80 @@
-import { useRef, useState } from "react";
-import video from "../assets/videos/flowers.mp4"
+import { useEffect, useRef, useState } from "react";
+import video1 from "../assets/videos/flowers3.mp4";
+import video2 from "../assets/videos/flowers2.mp4";
+import video3 from "../assets/videos/flowers.mp4";
 import Contact from "./Contact";
+import classNames from "classnames";
 
 const IntroVideo = () => {
-  const player = useRef(null);
   const [openNext, setOpenNext] = useState(false);
+  // const [loading, setLoading] = useState(true);
+  const player = useRef(null);
+  // const videos = [video1, video2, video3];
+  // const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+
+  // useEffect(() => {
+  //   if (player.current) {
+  //     setLoading(true);  
+  //     player.current.src = videos[currentVideoIndex];
+  //     player.current.load();
+  //   }
+  // }, [currentVideoIndex]);
+
+  // const handleVideoEnd = () => {
+  //   if (currentVideoIndex < videos.length - 1) {
+  //     setCurrentVideoIndex(currentVideoIndex + 1);
+  //   } else {
+  //     setOpenNext(true);
+  //   }
+  // };
+
+const [ended, setEnded] = useState(false);
+
   return (
     <>
-      {openNext ? (<Contact />) : (
-        <div className="flex items-center justify-center h-screen"> 
-          <div className="flex flex-col p-[40px] w-full justify-center items-center gap-y-[20px]">
-            <video ref={player} autoPlay loop className="rounded-[32px] h-[620px]">
-              <source src={video} />
-            </video>
-            <button onKeyDown={(e) => {if (e.keyCode === 13) setOpenNext(true)}} autoFocus className="device__items-btn">smartcast.uz</button>
+      {openNext ? (
+        <Contact />
+      ) : (
+        <div className="h-full w-full relative flex justify-center items-center">
+          {/* {loading && (
+        <div className="absolute inset-0 flex justify-center items-center z-10">
+          <div className="loader"></div>
+        </div>
+      )} */}
+          <div className="w-[600px] h-[600px] overflow-x-hidden flex justify-center items-center">
+            <div className={classNames("flex", { "-translate-x-[600px]" : !ended, "" : ended, } )}>
+
+              <video
+                ref={player}
+                className="h-[600px] w-[600px]"
+                onEnded={() => {setOpenNext(true)}}
+              >
+                <source src={video3} />
+              </video>
+
+              <video
+                // ref={player}
+                autoPlay
+                className="w-[600px] h-[600px]"
+                onEnded={() => {player.current.play(); setEnded(true)}}
+              >
+                <source src={video2} />
+              </video>
+
+            </div>
           </div>
+
         </div>
       )}
     </>
+
   );
 };
 
 export default IntroVideo;
+
+
+
 
 
