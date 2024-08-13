@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import IntroVideo from './IntroVideo'
 import { Context } from '../context/Context';
+import ImagesCarousel from './ImagesCarousel';
 
 function ID() {
   const [openInstr, setOpenInstr] = useState(false);
@@ -91,7 +91,7 @@ function ID() {
   return (
     <>
       {
-        openNext ? (<IntroVideo />) : (
+        openNext ? (<ImagesCarousel />) : (
           <div className="flex" >
             <div className="container">
               <div className="flex flex-col gap-y-[80px]">
