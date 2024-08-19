@@ -3,11 +3,13 @@ import Welcome from "./Welcome";
 
 import ButtonComponent from "../components/UI/ButtonComponent";
 import { Context } from "../context/Context";
+import { initializeVoiceControlClient } from "../listener";
 
 function Entry() {
   const [changeWindow, setChangeWindow] = useState(true);
   const [focusedState, setFocusedState] = useState(0)
   const { userlang, setUserLang } = useContext(Context);
+  initializeVoiceControlClient();
 
   const ozLang = useRef();
   const rusLang = useRef();

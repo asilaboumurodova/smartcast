@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+/* import { initializeApp } from "firebase/app";
 import { getMessaging  } from "firebase/messaging";
 
 const firebaseConfig = {
@@ -29,3 +29,4 @@ export function requestPermission() {
   });
 }
 requestPermission();
+ */

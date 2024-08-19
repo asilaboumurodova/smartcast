@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Contact from "./Contact";
 import roseImg from "@i/rose.jpg";
 import lilyImg from "@i/lilies.jpg";
+import Video from "./Video";
 
 const ImagesCarousel = () => {
   const [openNext, setOpenNext] = useState(false);
@@ -52,7 +53,7 @@ const ImagesCarousel = () => {
   return (
     <>
       {openNext ? (
-        <Contact />
+        <Video />
       ) : (
         <div className="h-screen w-screen flex justify-center items-center">
           <div className="h-full w-full max-w-[800px] max-h-[800px] relative flex flex-col gap-[20px] justify-center items-center my-0 mx-auto">
